@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.example.myapplication
 
 import android.os.Bundle
@@ -21,24 +23,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun displayTip(tip: Double) {
+        val formatTip = NumberFormat.getCurrencyInstance().format(tip)
+        binding.textTipAmount.text = getString(R.string.tip_amount, formatTip)
+    }
+
     private fun calculateTip() {
 
         val cost = binding.costOfService.text.toString().toDoubleOrNull()
-        val selctedId = binding.tipOptions.checkedRadioButtonId
-        if (cost == null) {
-            binding.textTipAmount.text = ""
-            Toast.makeText(this, R.string.validation_fill_cost_of_service, Toast.LENGTH_SHORT).show()
+        if (cost == null || cost == 0.0) {
+            displayTip(0.0)
+            Toast.makeText(this, R.string.validation_fill_cost_of_service, Toast.LENGTH_SHORT)
+                .show()
             return
         }
-        val tipPercentage = when (selctedId) {
-            R.id.button_radio_1 -> 0.20
-            R.id.button_radio_2 -> 0.18
-            else -> 0.15
-        }
-        var tip = cost * tipPercentage
+            val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
+                R.id.button_radio_1 -> 0.20
+                R.id.button_radio_2 -> 0.18
+                else -> 0.15
+            }
+            var tip = cost * tipPercentage
+            if (binding.BottomSwitch.isChecked) tip = ceil(tip)
 
-        val roundUp = binding.BottomSwitch.isChecked
-        if (roundUp) tip = ceil(tip)
         val formatTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.textTipAmount.text = getString(R.string.tip_amount, formatTip)
     }

@@ -8,14 +8,20 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/cost_of_service"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_service"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:hint="@string/cost_of_service"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cost_of_service_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/text_service_question"
@@ -23,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="@string/how_was_the_service"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
+        app:layout_constraintTop_toBottomOf="@id/text_service" />
 
     <RadioGroup
         android:id="@+id/tip_options"
@@ -60,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@id/button_radio_2" />
     </RadioGroup>
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/Bottom_Switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -72,22 +78,21 @@
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
+        android:id="@+id/button_calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_calculate"
-        app:layout_constraintTop_toBottomOf="@id/Bottom_Switch"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/calculate"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/calculate" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Bottom_Switch" />
 
     <TextView
         android:id="@+id/text_tipAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Tip amount $10"
-        app:layout_constraintTop_toBottomOf="@id/button_calculate"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/button_calculate"
+        tools:text="" />
 
 
 

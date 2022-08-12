@@ -9,5 +9,6 @@
     <string name="tip_amount">Tip Amount: %s</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="validation_fill_cost_of_service">fill the field "cost of service"!</string>
+    <string name="latebutton">lateButton %s</string>
 
 </resources>

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateTip() {
 
-        val cost = binding.costOfService.text.toString().toDoubleOrNull()
+        val cost = binding.costOfServiceEditText.text.toString().toDoubleOrNull()
         if (cost == null || cost == 0.0) {
             displayTip(0.0)
             Toast.makeText(this, R.string.validation_fill_cost_of_service, Toast.LENGTH_SHORT)
@@ -48,4 +48,5 @@ class MainActivity : AppCompatActivity() {
         val formatTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.textTipAmount.text = getString(R.string.tip_amount, formatTip)
     }
+
 }
